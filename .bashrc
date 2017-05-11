@@ -23,21 +23,6 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
 if [ ! -n "$SSH_TTY" ]; then
   export PS1=">$ "  # Local login
 else
@@ -64,7 +49,7 @@ fi
 
 alias vi='vim'
 alias seed='sudo'
-alias ll='ls -alF'
+alias ll='ls -latrh'
 alias la='ls -A'
 alias l='ls -CF'
 alias discovery="ssh discovery.indstate.edu -l bigel"
@@ -97,8 +82,7 @@ alias cdd="cd ~/downloads/"
 alias dlcd="cd ~/downloads/" 
 alias compile="java -jar ~bigel/games/Minecraft.jar"
 alias ctn="cat > /dev/null"
-export EPSXE='/usr/local/games/epsxe'
-export AD='/home/bigel/ardour'
+
 #disable Ctrl-D as a way to exit
 IGNOREEOF=1
 
